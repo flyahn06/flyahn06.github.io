@@ -1,0 +1,8 @@
+#title-background {
+    width: 100%;
+    height: 50%;
+}
+
+#blur {
+    filter: blur(3px);
+}
