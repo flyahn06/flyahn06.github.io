@@ -1,99 +1,103 @@
-#title-background {
-    color: white;
-    opacity: 90%;
-    background: white;
-    border: 1px solid white;
-    width: auto;
-    height: 500px;
+body {
+    background: #ffffff;
+    width: 100%;
+    height: 100%;
 }
 
-p {
-    color: black;
+.menuitem {
+    padding-left: 10px;
 }
 
-.dot {
-    height: 300px;
-    width: 300px;
-    background-color: #bbb;
-    border-radius: 50%;
-    margin: 100px 100px auto;
-    opacity: 100% !important;
-    float: left;
+a:hover {
+    animation: makeblue 0.5s forwards;
 }
-
-.footer {
-    margin-top: 40px;
-    font-size: 40px;
-    color: black;
-    font-family: "Nanum Gothic", serif;
-    animation: fadein 1500ms;
-}
-
-.footer:before {
-    opacity: 0%;
-    color: transparent;
-}
-
-@keyframes fadein {
-    0% {
-        opacity: 0%;
-    }
-
-    40% {
-        opacity: 0%;
-    }
-
+@keyframes makeblue {
     100% {
-        opacity: 100%;
+        color: lightblue;
     }
+}
+
+nav ul li {
+    display: inline;
+}
+
+li {
+    padding-left: 4%;
+}
+
+#menu {
+    display: inline;
+}
+
+#header {
+    width: 100%;
+    height: 30em;
+}
+
+#banner-top {
+    width: 100%;
+    height: 100%;
+    background: url("asset/char.png") fixed no-repeat center center;
+    background-size: cover;
+    text-align: center;
+}
+
+#white-transparent {
+    background: rgba(255, 255, 255, 0.5);
+    height: 100%;
+}
+
+#white-transparent:hover {
+    animation: fadeout 1s forwards;
+}
+
+.banner-name {
+    font-size: 50px;
+    font-family: NanumSquareRoundOTF, serif;
+    margin-left: 5%;
+    padding-top: 10%;
+}
+
+.banner-intro {
+    font-size: 30px;
+    font-family: NanumSquareRoundOTF, serif;
+    margin-left: 5%
+}
+
+a {
+    color: black;
+    padding-left: 5%;
+    text-decoration: none;
+}
+
+#footer {
+    background-color: rgba(255, 255, 255, 0.5)
+}
+
+.logo {
+    background: url("asset/char.png");
+}
+
+@keyframes fadeout {
+    100% {
+        color: transparent;
+        background-color: transparent;
+    }
+
 }
 
 .title {
-    font-size: 100px;
-    min-width:11px;
-    white-space: nowrap;
-    margin: 0;
-    position: fixed;
-    color: transparent;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    font-family: "Nanum Gothic", serif;
+    color: mediumpurple;
+    font-size: 2em;
 }
 
-.title::before {
-    content: "Andrew Ahn";
-    position: absolute;
-    top: -230px;
-    left: -30px;
-    width: 100%;
-    height: 100%;
-    color: black;
-    overflow: hidden;
-    border-right: 1px solid transparent;
-    animation: typing 1000ms steps(9);
+#content {
+    text-align: center;
+    font-size: 15px;
+    padding-left: 1%;
+    padding-right: 2%;
 }
 
-@keyframes typing{
-    0% {
-        width: 0%;
-    }
-
-    99% {
-        border-right: 1px solid black;
-    }
-
-    100% {
-        width: 100%;
-        border-right: 1px solid transparent;
-    }
-}
-
-img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-#blur {
-    filter: blur(3px);
+.content {
+    font-size: 15px;
 }
