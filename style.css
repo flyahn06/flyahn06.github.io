@@ -8,13 +8,12 @@ body {
     padding-left: 10px;
 }
 
-a:hover {
-    animation: makeblue 0.5s forwards;
+a {
+    transition: color .5s;
 }
-@keyframes makeblue {
-    100% {
-        color: lightblue;
-    }
+
+a:hover {
+    color: lightblue;
 }
 
 nav ul li {
@@ -45,23 +44,24 @@ li {
 #white-transparent {
     background: rgba(255, 255, 255, 0.5);
     height: 100%;
+    transition: color, background-color 1s;
 }
 
 #white-transparent:hover {
-    animation: fadeout 1s forwards;
+    color: transparent;
+    background-color: transparent;
 }
 
 .banner-name {
     font-size: 50px;
-    font-family: NanumSquareRoundOTF, serif;
-    margin-left: 5%;
+    font-family: 'Nanum Gothic', sans-serif;
+    margin: auto;
     padding-top: 10%;
 }
 
 .banner-intro {
     font-size: 30px;
-    font-family: NanumSquareRoundOTF, serif;
-    margin-left: 5%
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 a {
@@ -76,14 +76,6 @@ a {
 
 .logo {
     background: url("asset/char.png");
-}
-
-@keyframes fadeout {
-    100% {
-        color: transparent;
-        background-color: transparent;
-    }
-
 }
 
 .title {
