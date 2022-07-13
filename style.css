@@ -55,6 +55,7 @@ li {
 .banner-name {
     font-size: 50px;
     font-family: 'Nanum Gothic', sans-serif;
+    font-weight: bold;
     margin: auto;
     padding-top: 10%;
 }
@@ -92,4 +93,41 @@ a {
 
 .content {
     font-size: 15px;
+}
+
+.lang-icon {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    transition: .3s;
+    padding-top: 5px;
+}
+
+
+#python-logo:hover {
+    filter: invert(39%) sepia(56%) saturate(632%) hue-rotate(166deg) brightness(92%) contrast(81%);
+}
+
+#cpluscplus-logo:hover {
+    filter: invert(22%) sepia(89%) saturate(1578%) hue-rotate(185deg) brightness(96%) contrast(103%);
+}
+
+#mysql-logo:hover {
+    filter: invert(45%) sepia(8%) saturate(2969%) hue-rotate(163deg) brightness(93%) contrast(83%);
+}
+
+#go-logo:hover {
+    filter: invert(48%) sepia(56%) saturate(3138%) hue-rotate(160deg) brightness(100%) contrast(101%);
+}
+
+#html-logo:hover {
+    filter: invert(27%) sepia(25%) saturate(6417%) hue-rotate(355deg) brightness(116%) contrast(78%);
+}
+
+#css-logo:hover {
+    filter: invert(32%) sepia(19%) saturate(6805%) hue-rotate(186deg) brightness(92%) contrast(84%);
+}
+
+#js-logo:hover {
+    filter: invert(96%) sepia(87%) saturate(7498%) hue-rotate(339deg) brightness(101%) contrast(94%);
 }
