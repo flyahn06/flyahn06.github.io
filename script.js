@@ -25,8 +25,8 @@ function setConstants() {
     }
 
     langIconsContents = {
-        'Python': "가장 먼저 시작한 언어입니다. <br>프로그래밍의 재미를 처음으로 알려줬습니다. <br><span class='strong'>6년차입니다.</span>",
-        'C++': "두 번째로 시작한 언어입니다. <br>파이썬만큼 익숙지는 않지만 열심히 배우는 중입니다. <br>구렁이 프로젝트의 기본 언어입니다.",
+        'Python': "<span class='strong'>메인</span>: 가장 먼저 시작한 언어입니다. <br>프로그래밍의 재미를 처음으로 알려줬습니다. <br>6년차입니다.",
+        'C++': "<span class='strong'>서브</span>: 두 번째로 시작한 언어입니다. <br>파이썬만큼 익숙지는 않지만 열심히 배우는 중입니다. <br>구렁이 프로젝트의 기본 언어입니다.",
         'MySql': "첫 번째 데이터베이스입니다.<br>비트코인 당락 예측기를 만들며 처음 접했습니다.",
         'Go': "고루틴은 참 좋죠.",
         'HTML': "이 웹사이트를 만드려고 시작했습니다. <br>사용한 기간이 가장 짧아요.",
@@ -35,6 +35,9 @@ function setConstants() {
     }
 
     previousClicked = document.getElementById('python-logo')
+
+    document.getElementById('lang-intro-name').textContent = 'Python'
+    document.getElementById('lang-intro-document').innerHTML = langIconsContents['Python']
 }
 
 
