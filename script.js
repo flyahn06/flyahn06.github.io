@@ -31,13 +31,14 @@ function setConstants() {
         'Go': "고루틴은 참 좋죠.",
         'HTML': "이 웹사이트를 만드려고 시작했습니다. <br>사용한 기간이 가장 짧아요.",
         'CSS': "이 웹사이트를 만드려고 시작했습니다. <br>사용한 기간이 가장 짧아요.",
-        'Javascript': "예전부터 관심있었지만 정식으로 공부해본 적은 없었습니다. <br>마찬가지로 이 웹사이트를 만드려고 시작했아요. <br>두 번째로 사용한 기간이 짧아요."
+        'Javascript': "예전부터 관심있었지만 정식으로 공부해본 적은 없었습니다. <br>마찬가지로 이 웹사이트를 만드려고 시작했어요. <br>두 번째로 사용한 기간이 짧아요."
     }
 
     previousClicked = document.getElementById('python-logo')
 
     document.getElementById('lang-intro-name').textContent = 'Python'
     document.getElementById('lang-intro-document').innerHTML = langIconsContents['Python']
+    document.getElementById('lang-intro-name').style.filter = langIconsColors['Python']
 }
 
 
@@ -49,8 +50,10 @@ function documentChange(icon) {
 
     langIcons[icon].style.filter = langIconsColors[icon]
     lang_name.textContent = icon
+    lang_name.style.filter = langIconsColors[icon]
 
     lang_content.innerHTML = langIconsContents[icon]
+    //lang_content.style.filter = langIconsColors[icon]
 
     previousClicked = langIcons[icon]
 }
