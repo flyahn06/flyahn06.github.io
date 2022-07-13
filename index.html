@@ -8,7 +8,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
     </head>
-<body>
+<body onload="setConstants()">
 <script type="text/javascript" src="script.js"></script>
 <div id="menu">
     <nav>
@@ -39,15 +39,20 @@
         할 줄 아는 것들
     </p>
     <div>
-        <img src="asset/python.svg" id="python-logo" class="lang-icon">
-        <img src="asset/cplusplus.svg" id="cpluscplus-logo" class="lang-icon">
-        <img src="asset/mysql.svg" id="mysql-logo" class="lang-icon">
-        <img src="asset/go.svg" id="go-logo" class="lang-icon">
+        <img src="asset/python.svg" id="python-logo" class="lang-icon" onclick="documentChange('Python')">
+        <img src="asset/cplusplus.svg" id="cpluscplus-logo" class="lang-icon" onclick="documentChange('C++')">
+        <img src="asset/mysql.svg" id="mysql-logo" class="lang-icon" onclick="documentChange('MySql')">
+        <img src="asset/go.svg" id="go-logo" class="lang-icon" onclick="documentChange('Go')">
+        <img src="asset/html5.svg" id="html-logo" class="lang-icon" onclick="documentChange('HTML')">
+        <img src="asset/css3.svg" id="css-logo" class="lang-icon" onclick="documentChange('CSS')">
+        <img src="asset/javascript.svg" id="js-logo" class="lang-icon" onclick="documentChange('Javascript')">
     </div>
+
     <div>
-        <img src="asset/html5.svg" id="html-logo" class="lang-icon">
-        <img src="asset/css3.svg" id="css-logo" class="lang-icon">
-        <img src="asset/javascript.svg" id="js-logo" class="lang-icon">
+        <h1 id="lang-intro-name">Python</h1>
+        <p class="content" id="lang-intro-document">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, tenetur.
+        </p>
     </div>
 
 </div>
