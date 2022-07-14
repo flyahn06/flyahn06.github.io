@@ -39,6 +39,7 @@ function setConstants() {
     document.getElementById('lang-intro-name').textContent = 'Python'
     document.getElementById('lang-intro-document').innerHTML = langIconsContents['Python']
     document.getElementById('lang-intro-name').style.filter = langIconsColors['Python']
+    langIcons['Python'].style.filter = langIconsColors['Python']
 }
 
 
