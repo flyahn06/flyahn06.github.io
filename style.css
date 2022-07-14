@@ -131,3 +131,10 @@ a {
 #js-logo:hover {
     filter: invert(96%) sepia(87%) saturate(7498%) hue-rotate(339deg) brightness(101%) contrast(94%);
 }
+
+#footer {
+    margin: auto;
+    text-align: center;
+    font-family: Arial;
+    font-size: 12px;
+}
