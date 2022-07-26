@@ -38,27 +38,34 @@
 
     <hr/>
     <span>&nbsp;</span>
-    <div id="what-can-i-do">
+    <div id="what-can-i-do" style="display: inline">
         <p class="title" style="font-size: 50px">
             할 줄 아는 것들
         </p>
-        <div>
-            <img src="asset/python.svg" id="python-logo" class="lang-icon" onclick="documentChange('Python')">
-            <img src="asset/cplusplus.svg" id="cpluscplus-logo" class="lang-icon" onclick="documentChange('C++')">
-            <img src="asset/mysql.svg" id="mysql-logo" class="lang-icon" onclick="documentChange('MySql')">
-            <img src="asset/go.svg" id="go-logo" class="lang-icon" onclick="documentChange('Go')">
-            <img src="asset/html5.svg" id="html-logo" class="lang-icon" onclick="documentChange('HTML')">
-            <img src="asset/css3.svg" id="css-logo" class="lang-icon" onclick="documentChange('CSS')">
-            <img src="asset/javascript.svg" id="js-logo" class="lang-icon" onclick="documentChange('Javascript')">
-        </div>
-    </div>
+        <table style="margin: 0px auto">
+            <tr>
+                <td><img src="asset/python.svg" id="python-logo" class="lang-icon" onclick="documentChange('Python')"></td>
 
-    <div>
-        <h1 id="lang-intro-name">Lorem</h1>
-        <p class="content" id="lang-intro-document">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, voluptatibus!
-    </div>
 
+                <td rowspan="7">
+                    <h1 id="lang-intro-name" style="font-size: 100px">Lorem</h1>
+                    <p class="content" id="lang-intro-document" style="font-size: 30px">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, voluptatibus!
+                    </p>
+                </td>
+            </tr>
+            <tr><td><img src="asset/cplusplus.svg" id="cpluscplus-logo" class="lang-icon" onclick="documentChange('C++')"></td></tr>
+            <tr><td><img src="asset/mysql.svg" id="mysql-logo" class="lang-icon" onclick="documentChange('MySql')"></td></tr>
+            <tr><td><img src="asset/go.svg" id="go-logo" class="lang-icon" onclick="documentChange('Go')"></td></tr>
+            <tr><td><img src="asset/html5.svg" id="html-logo" class="lang-icon" onclick="documentChange('HTML')"></td></tr>
+            <tr><td><img src="asset/css3.svg" id="css-logo" class="lang-icon" onclick="documentChange('CSS')"></td></tr>
+            <tr>
+                <td><img src="asset/javascript.svg" id="js-logo" class="lang-icon" onclick="documentChange('Javascript')"></td>
+            </tr>
+        </table>
+
+
+    </div>
     <div id="personal-projects" style="background: #222222">
         <p class="title" style="padding-top: 1em; padding-bottom: 0em; font-size: 100px;">
             개인 프로젝트

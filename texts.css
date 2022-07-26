@@ -1,3 +1,15 @@
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+pre {
+    text-align: center;
+}
+
 .strong {
     font-size: larger;
     color: rgba(255, 0, 0, 0.5);
