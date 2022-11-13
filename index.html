@@ -1,166 +1,123 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="utf-8">
-    <title>Andrew, the Dreamer</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="texts.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        #webcam-container {
+            width: 500px;
+            margin: 0px auto;
+        }
+
+    </style>
 </head>
-<body onload="setConstants()">
-<script type="text/javascript" src="script.js"></script>
-<div id="menu">
-    <nav>
-        <ul>
-            <li>로고가 들어갈 부분</li>
-            <li><img src="asset/그림.png" style="height: 30px; text-align: center; margin-bottom: 10px; float: right"></li>
-            <li style="float: right; padding-right: 3%"><a href="#" class="menuitem">About Me</a></li>
-            <li style="float: right"><a href="#" class="menuitem">Projects</a></li>
-            <li style="float: right"><a href="#" class="menuitem">SubProj</a></li>
-            <li style="float: right"><a href="#" class="menuitem">Contact</a></li>
-        </ul>
-    </nav>
-</div>
-<div id="header">
-    <div id="banner-top">
-        <div id="white-transparent">
-            <p class="banner-name">Andrew Ahn</p>
-            <p class="banner-intro">The Dreamer</p>
-        </div>
-    </div>
 
-</div>
-<div id="content">
-    <pre style="font-size: 20px">while (!succeed) { tryAgain(); }</pre>
-    <p class="content">안녕하세요, 송진우가 인정한 프로그래머 안동기입니다 :)</p>
+<body onload="init()">
+<div id="webcam-container"></div>
+<div id="label-container"></div>
+<p id="equation"></p>
 
-    <hr/>
-    <span>&nbsp;</span>
-    <div id="what-can-i-do" style="display: inline">
-        <p class="title" style="font-size: 50px">
-            할 줄 아는 것들
-        </p>
-        <table style="margin: 0px auto">
-            <tr>
-                <td><img src="asset/python.svg" id="python-logo" class="lang-icon" onclick="documentChange('Python')"></td>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+<script type="text/javascript">
+    // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+    const URL = "./hand_model_improved/";
 
+    let model, webcam, labelContainer, maxPredictions;
+    let currentPredictionClass = 0
+    let currentMaxPredictionProbability = 0
+    let prevPredictionClass = 0
+    let predictions = [];
+    let appearance = 0;
+    let classLabels = [1, 2, 3, 4, 5, "+", "-", "=", "del", 'AC', null]
+    let equation = ""
 
-                <td rowspan="7">
-                    <h1 id="lang-intro-name" style="font-size: 100px">Lorem</h1>
-                    <p class="content" id="lang-intro-document" style="font-size: 30px">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, voluptatibus!
-                    </p>
-                </td>
-            </tr>
-            <tr><td><img src="asset/cplusplus.svg" id="cpluscplus-logo" class="lang-icon" onclick="documentChange('C++')"></td></tr>
-            <tr><td><img src="asset/mysql.svg" id="mysql-logo" class="lang-icon" onclick="documentChange('MySql')"></td></tr>
-            <tr><td><img src="asset/go.svg" id="go-logo" class="lang-icon" onclick="documentChange('Go')"></td></tr>
-            <tr><td><img src="asset/html5.svg" id="html-logo" class="lang-icon" onclick="documentChange('HTML')"></td></tr>
-            <tr><td><img src="asset/css3.svg" id="css-logo" class="lang-icon" onclick="documentChange('CSS')"></td></tr>
-            <tr>
-                <td><img src="asset/javascript.svg" id="js-logo" class="lang-icon" onclick="documentChange('Javascript')"></td>
-            </tr>
-        </table>
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
 
+        // 모델 불러오기
+        model = await tmImage.load(modelURL, metadataURL);
 
-    </div>
-    <div id="personal-projects" style="background: #222222">
-        <p class="title" style="padding-top: 1em; padding-bottom: 0em; font-size: 100px;">
-            개인 프로젝트
-        </p>
+        // 총 클래스 수 (스크립트에서 직접 라벨을 표시함)
+        maxPredictions = model.getTotalClasses();
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad beatae delectus dicta dignissimos dolore
-            doloremque et illo nesciunt officia perferendis quos sequi, sit, soluta tempora ullam veniam vero
-            voluptas!</p>
-        <p>Atque consequatur ducimus ipsa modi nemo quo recusandae sapiente, sequi suscipit. Aspernatur at deserunt
-            dolore eos expedita illo iste laudantium quod recusandae repellat, ut voluptatem. Aliquam at quia
-            repudiandae temporibus!</p>
-        <p>Ea eos esse fugit illum modi quaerat quidem quis veniam vitae! Adipisci autem, consequuntur dolores eligendi
-            minima non odio quod vero. Aperiam atque cum earum minus neque provident reprehenderit sit?</p>
-        <p>Aliquid distinctio eligendi eum libero nostrum quidem rem saepe tempora veritatis, voluptatem. A ad at
-            corporis ea, error et facere fugiat fugit magni nulla numquam quia quis quod similique vel?</p>
-        <p>A, ab accusantium architecto assumenda at autem dolores earum eos error facere ipsam laudantium magnam minima
-            molestiae, molestias nesciunt odio omnis qui quidem quo reiciendis repellat reprehenderit repudiandae sequi
-            voluptate?</p>
-        <p>Amet delectus, deserunt dolorem ea eligendi est eum facilis id magnam necessitatibus nobis omnis provident
-            quia quidem rem tenetur voluptatibus? Dolores ipsa magni quia ratione rem sed, similique sint
-            voluptatibus?</p>
-        <p>Asperiores dolor eum libero magni nobis quam quas sequi. Accusantium adipisci consequatur dolorem explicabo,
-            iste molestias numquam obcaecati pariatur quasi, quod reiciendis, repellendus suscipit veritatis. Distinctio
-            iusto laboriosam quas totam!</p>
-        <p>Incidunt labore nesciunt nostrum provident repudiandae similique tempora. Aliquid animi consequatur
-            distinctio doloremque eligendi esse eum, eveniet fugit illo itaque minima natus numquam omnis perferendis
-            quas quisquam repudiandae sit veritatis!</p>
-        <p>Aliquid architecto assumenda consectetur, corporis dolorem doloribus expedita explicabo fuga illo iusto,
-            laboriosam odio odit officia praesentium quaerat qui ratione recusandae reiciendis sequi sit tempore totam
-            ullam voluptas! Amet, voluptatibus.</p>
-        <p>Adipisci assumenda autem, culpa cumque dolore facilis fuga ipsa iusto nobis perferendis qui suscipit veniam
-            voluptatibus! Architecto dicta eaque excepturi, hic ipsum molestias placeat quas quidem saepe, suscipit, vel
-            vitae.</p>
-        <p>Doloribus ea illum, itaque maiores quaerat voluptate? Debitis dolores dolorum excepturi expedita libero nam
-            soluta, vero. Dolore iste magnam natus officia veniam? Eligendi eos fugiat fugit nulla praesentium
-            provident, quae?</p>
-        <p>A at commodi corporis, culpa cum deserunt distinctio, dolores ducimus eaque et fuga ipsum magni minima minus
-            nulla odio possimus provident quasi quia rem sapiente sequi ut, vitae voluptatem voluptatibus.</p>
-        <p>Adipisci amet aut culpa deserunt ducimus earum eius eligendi esse excepturi expedita explicabo harum, hic in
-            inventore iure laudantium magni minus nemo neque nisi non perferendis rem sint unde voluptates.</p>
-        <p>Adipisci, aliquam assumenda culpa dolores est id incidunt, iusto minus odit, vel veniam voluptatum. Alias
-            aperiam, at cupiditate fugiat maiores nisi nulla optio perspiciatis praesentium quia, similique velit
-            veritatis, vero.</p>
-        <p>Beatae error, eveniet ex itaque laborum magni nisi perspiciatis. Aliquid, beatae blanditiis consequatur
-            cumque eaque eos iusto magnam minima minus, molestiae molestias, nam neque perferendis perspiciatis sapiente
-            similique ullam vero?</p>
-        <p>Asperiores et nihil nobis optio provident quae vitae! Alias aliquam aliquid blanditiis cupiditate dolores
-            eligendi excepturi expedita illo maiores optio provident, tenetur, velit, voluptate? At debitis illum
-            mollitia nemo omnis.</p>
-        <p>Consectetur debitis dolorum ea ipsum laboriosam laborum quos similique tenetur. Accusantium animi beatae
-            consectetur cumque distinctio dolorem eos fuga fugiat fugit inventore, odio officiis optio placeat quas
-            tempora velit voluptates.</p>
-        <p>Consequuntur cupiditate, distinctio dolores ducimus eveniet illo ipsam, nam nemo nihil nisi odit, omnis quam
-            quisquam quod quos ratione rem sed totam veniam vitae! Consequuntur, delectus, sunt. Architecto, commodi,
-            repellendus.</p>
-        <p>Commodi dolorum ducimus harum itaque laboriosam, minima nisi perspiciatis quibusdam. Aliquam aperiam aut
-            autem cumque deleniti eius et illum nesciunt nisi non, porro praesentium quam quis repellendus unde voluptas
-            voluptatem.</p>
-        <p>Accusamus alias assumenda blanditiis corporis culpa cumque deleniti, dolore dolorum esse, id illo libero
-            magnam minima mollitia odio provident quam qui, tempora tempore voluptate! Ex expedita possimus temporibus
-            totam velit?</p>
-        <p>Ab aliquid commodi consequatur consequuntur deleniti dolor doloribus ducimus facere harum in incidunt
-            laudantium magni molestiae, non, odio qui quisquam rem sed sint soluta tempore totam unde voluptatem
-            voluptates voluptatibus.</p>
-        <p>Corporis perspiciatis quas reprehenderit sapiente voluptatem? Accusamus alias aspernatur consectetur debitis
-            deserunt error, et hic, illum neque odit porro praesentium, quam rem saepe suscipit voluptate voluptatum!
-            Beatae molestias neque sapiente?</p>
-        <p>Alias asperiores, autem blanditiis consectetur corporis cupiditate dolore doloremque fuga incidunt minus
-            molestias nihil perferendis reiciendis sequi sit veniam voluptas. Ad delectus in incidunt labore minus odio
-            saepe sit velit!</p>
-        <p>Adipisci aspernatur culpa cumque dicta dolorum eius incidunt nihil quos rerum sequi! Cum dolore dolores, eius
-            est, illum incidunt laborum modi nam officia quos repellendus reprehenderit totam veniam. Ab, quia!</p>
-        <p>Dolorem eaque esse excepturi laudantium natus, obcaecati praesentium reiciendis repellat sapiente voluptate?
-            Atque beatae dignissimos exercitationem, facere laboriosam molestiae nesciunt nulla obcaecati optio quam rem
-            repellat saepe sit, tenetur velit?</p>
-        <p>Accusamus, aliquid enim esse fugiat minus modi quaerat quisquam suscipit tempora voluptate. Alias aliquam,
-            commodi consequatur dolor explicabo facilis fugiat ipsum laboriosam officia quaerat quis quisquam quod, quos
-            repellat temporibus!</p>
-        <p>Consectetur cupiditate eaque error eum libero modi pariatur, quisquam sequi? Assumenda distinctio et iste,
-            maiores nihil praesentium ratione unde. Cum in laboriosam nemo officiis, perspiciatis praesentium quis quo
-            reiciendis rem!</p>
-        <p>Aperiam atque cumque delectus fuga fugit id illum laboriosam quod rem rerum. Accusamus, assumenda culpa
-            cumque dolores ducimus fugit hic provident ut vero? Assumenda consequuntur ex porro unde. Expedita,
-            ipsa.</p>
-        <p>Consectetur eligendi exercitationem hic id molestiae numquam optio quas? Ipsum libero maxime minima nihil
-            quibusdam. Aut dicta ducimus impedit magnam mollitia nihil placeat praesentium rerum? Eligendi esse
-            necessitatibus possimus ullam!</p>
-        <p>Quam ut, vero? Ab ad alias aliquid animi, consequuntur cumque dicta dolorum eius, eveniet hic iusto nesciunt
-            nihil nobis nulla suscipit tempore velit vitae voluptas? Adipisci atque eligendi minus non?</p>
-    </div>
+        // 웹캠 준비
+        const flip = true;
+        webcam = new tmImage.Webcam(500, 500, flip);
+        await webcam.setup();
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        // 웹캠 표시, 라벨과 정확도 표시
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+
+        labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < maxPredictions; i++)
+            labelContainer.appendChild(document.createElement("div"));
+    }
+
+    async function loop() {
+        webcam.update();
+        await predict();
+        window.requestAnimationFrame(loop);
+    }
+
+    async function predict() {
+        const prediction = await model.predict(webcam.canvas);
 
 
-</div>
-<div id="footer">
-    <p>Copyright (c) 2022 Andrew A. All Rights Reserved.</p>
-</div>
+
+        for (let i = 0; i < maxPredictions; i++) {
+            predictions.push(parseFloat(prediction[i].probability.toFixed(2)))
+        }
+
+        currentMaxPredictionProbability = Math.max(...predictions)
+        currentPredictionClass = predictions.indexOf(currentMaxPredictionProbability)
+
+        for (let i = 0; i < maxPredictions; i++) {
+            if (currentMaxPredictionProbability == prediction[i].probability.toFixed(2))
+                labelContainer.childNodes[i].innerHTML = "<p style='color: red'>" + prediction[i].className + ": " + prediction[i].probability.toFixed(2) + "</p>";
+            else
+                labelContainer.childNodes[i].innerHTML = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+        }
+
+        if (currentPredictionClass !== prevPredictionClass) {
+            appearance++;
+            if (appearance > 30) {
+                prevPredictionClass = currentPredictionClass
+                console.log(classLabels[currentPredictionClass])
+                appearance = 0;
+
+                if (classLabels[currentPredictionClass] == null) {
+
+                } else if (classLabels[currentPredictionClass] === "AC") {
+                    equation = ""
+                    document.getElementById('equation').innerText = ""
+                } else if (classLabels[currentPredictionClass].toString() === '=') {
+                    try {
+                        document.getElementById('equation').innerText = eval(equation)
+                    } catch (e) {
+                        document.getElementById('equation').innerHTML = "<p style='color: red'>계산식이 잘못되었습니다.</p>"
+                    }
+                    equation = ""
+                } else if (classLabels[currentPredictionClass].toString() === "del") {
+                    equation = equation.substr(0, equation.length - 1)
+                    document.getElementById('equation').innerText = equation
+                } else {
+                    equation += classLabels[currentPredictionClass].toString()
+                    document.getElementById('equation').innerText = equation
+                }
+
+            }
+        }
+
+        predictions = []
+    }
+</script>
+
 </body>
 </html>
