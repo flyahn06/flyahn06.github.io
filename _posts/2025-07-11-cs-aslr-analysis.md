@@ -12,8 +12,8 @@ permalink: /cs/aslr-analysis/
 toc: true
 toc_sticky: true
 
-date: 2025-07-16
-last_modified_at: 2025-07-16
+date: 2025-07-11
+last_modified_at: 2025-07-11
 ---
 최근 CTF를 푸느라 열심히 디버깅을 하다 특이한 사실을 하나 관찰했다. 32비트 바이너리가 제공되는 문제였는데, AAW가 가능하고 NX가 걸려있지 않아 stack에 쉘코드를 삽입 후 그 주소로 점프해 쉘을 열 수 있었다. 그런데 문제는 stack상 주소를 알아낼 수 있는 방법이 전혀 없다는 것이었다. 고민하면서 계속 디버깅을 하다 stack주소가 항상 0xff로 시작한다는 사실을 알게 되었다. 분명 ASLR이 활성화되어있어 stack 주소가 계속해서 바뀌어야 하는데, 첫 바이트가 항상 0xff라는 사실은 굉장히 흥미로웠다. 왜 이런지 보기 위해 ASLR을 조금 깊이 파고들었다.
 # 1. Canonical Addressing
