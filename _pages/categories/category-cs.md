@@ -1,9 +1,9 @@
 ---
-title: "Writeups"
+title: "CS"
 layout: category
-permalink: /categories/writeups/
+permalink: /categories/cs/
 author_profile: true
-taxonomy: Writeups
+taxonomy: CS
 sidebar:
   nav: "categories"
 ---
