@@ -26,7 +26,7 @@ categories:
         url: /categories/kernel-exploit-tech
   - title: "System Hacking"
     children:
-      - title: "Exploit Tech Ananlysis"
+      - title: "Exploit Tech Analysis"
         url: /categories/exploit-tech-analysis
   - title: "CS"
     url: /categories/cs

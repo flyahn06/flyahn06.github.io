@@ -65,13 +65,23 @@ $base0f: #a16946 !default;
 
 /* next/previous buttons */
 .pagination--pager {
-  color: $text-color;
-  background-color: rgba($primary-color, 0.8);
-  border-color: transparent;
+  background: none;
+  border: none;
+  color: #888;
+  padding: 0.1em 0.3em;
+  font-size: 0.6em;
 
-  &:visited {
-    color: $text-color;
-}
+  &:hover {
+    color: #000;
+  }
+
+  &.disabled {
+    color: #ccc;
+    pointer-events: none;
+    &:hover {
+      color: #ccc;
+    }
+  }
 }
 
 .ais-search-box .ais-search-box--input {
