@@ -1,14 +1,14 @@
 /* ==========================================================================
-   Plum skin
+   flyahn skin
    ========================================================================== */
 
 /* Colors */
-$background-color: #F4F3F2 !default;
+$background-color: #f7f7f1 !default;
 $text-color: #070707 !default;
 $primary-color: #AFCBFF !default;
 
 $border-color: mix(#fff, $background-color, 20%) !default;
-$code-background-color:rgba(240, 240, 240, 0.5);
+$code-background-color: #262626;
 $code-background-color-dark: rgba(185, 185, 185, 0.25) !default;
 
 $mark-highlight-color: rgba($primary-color, 0.15) !default;
@@ -31,23 +31,23 @@ $yiq-contrasted-light-default: #fff !default;
 $yiq-contrasted-threshold: 175 !default;
 $yiq-debug: false !default;
 
-/* plum syntax highlighting (base16) */
-$base00: #ffffff !default;
-$base01: #e0e0e0 !default;
-$base02: #d0d0d0 !default;
-$base03: #b0b0b0 !default;
-$base04: #000000 !default;
-$base05: #101010 !default;
-$base06: #151515 !default;
-$base07: #202020 !default;
-$base08: #ff0086 !default;
-$base09: #fd8900 !default;
-$base0a: #aba800 !default;
-$base0b: #00c918 !default;
-$base0c: #1faaaa !default;
-$base0d: #3777e6 !default;
-$base0e: #ad00a1 !default;
-$base0f: #cc6633 !default;
+/* syntax highlighting (base16) dark */
+$base00: #262626 !default;
+$base01: #383838 !default;
+$base02: #484848 !default;
+$base03: #787878 !default;
+$base04: #b8b8b8 !default;
+$base05: #d8d8d8 !default;
+$base06: #e8e8e8 !default;
+$base07: #f8f8f8 !default;
+$base08: #ab4642 !default;
+$base09: #dc9656 !default;
+$base0a: #f7ca88 !default;
+$base0b: #a1b56c !default;
+$base0c: #86c1b9 !default;
+$base0d: #7cafc2 !default;
+$base0e: #ba8baf !default;
+$base0f: #a16946 !default;
 
 .author__urls.social-icons i,
 .author__urls.social-icons .svg-inline--fa,
