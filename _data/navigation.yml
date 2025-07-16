@@ -18,11 +18,17 @@ main:
 # sidebar navigation (categories)
 # 2022.02.15 sidebar update : simple ver.
 categories:
-  - title: "Categories1"
-    url: /categories/categories1/
-  - title: "Categories2"
-    url: /categories/categories2/
-  - title: "Categories3"
-    url: /categories/categories3/
-  - title: "Categories4"
-    url: /categories/categories4/
+  - title: "Kernel"
+    children:
+      - title: "Kernel Analysis"
+        url: /categories/kernel-analysis
+      - title: "Kernel Exploit Tech"
+        url: /categories/kernel-exploit-tech
+  - title: "System Hacking"
+    children:
+      - title: "Analysis"
+        url: /categories/exploit-tech-analysis
+      - title: "Writeups"
+        url: /categories/writeups
+  - title: "CS"
+    url: /categories/cs
