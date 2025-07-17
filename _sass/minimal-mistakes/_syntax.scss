@@ -18,6 +18,8 @@ figure.highlight {
   pre.highlight {
     margin: 0;
     padding: 1em;
+    white-space: pre;
+    overflow-x: auto; /* Add horizontal scroll if content overflows */
   }
 }
 
