@@ -87,3 +87,10 @@ $base0f: #a16946 !default;
 .ais-search-box .ais-search-box--input {
   background-color: $form-background-color;
 }
+
+figure figcaption {
+  display: block;
+  width: 100%;
+  font-size: 0.8em !important;
+  text-align: center;
+}
