@@ -63,6 +63,12 @@ $base0f: #a16946 !default;
 }
 }
 
+.h3-inline {
+  font-size: 1.25em;
+  font-weight: bold;
+  font-family: "Roboto", "Noto Sans KR", sans-serif;
+}
+
 /* next/previous buttons */
 .pagination--pager {
   background: none;
@@ -93,4 +99,8 @@ figure figcaption {
   width: 100%;
   font-size: 0.8em !important;
   text-align: center;
+}
+
+h3.inline-h3 {
+  display: inline;
 }
