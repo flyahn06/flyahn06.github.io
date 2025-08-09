@@ -57,7 +57,7 @@ setsid /bin/cttyhack setuidgid root /usr/bin/jail
 ## 0-2. 기본 설정
 
 디버거로는 gef를 사용했으며, 커널의 심볼을 자동으로 올려주는 `vmlinux`와 물리 주소를 볼 수 있는 `xp` 명령등을 사용하기 위해 `gef-kernel`을 얹어 사용했다.
-`gef-kernel` 플러그인은 (여기)[https://github.com/destr4ct/gef-kernel]애서 받을 수 있다. 
+`gef-kernel` 플러그인은 [여기](https://github.com/destr4ct/gef-kernel)에서 받을 수 있다. 
 
 # 1. 코드 분석
 
