@@ -260,7 +260,7 @@ printf("success\n[*] affected address: %p\n", evil);
 </center>
 {% include gallery caption="`dup()` 호출 후 실제 메모리 모습" %}
 
-## 2-3. AAR / AAW 할당
+## 2-3. AAR / AAW
 
 앞서 말했듯 우리는 PTE page 전체에 대한 쓰기/읽기가 필요하고, 이를 위해 DMA-BUF를 활용해볼 수 있다. 
 DMA_BUF는 PTE와 가까운 영역에 배치되므로 충분히 `dup()`을 반복 호출해 도달할 수 있다는 점을 고려하면, 다음과 깉은 공격 방법을 생각해볼 수 있다.
