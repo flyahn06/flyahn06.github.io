@@ -291,7 +291,7 @@ for (int i = 0; i < 0x1000; i++) {
 <center>
     <img src="/assets/images/posts_img/writeups/m0lecon-2023-keasy/munmap_mmap.png" alt="munmap_mmap.png">
 </center>
-{% include gallery caption="`munmap()`, `mmap()` 호출 직후. 여기서 다시 `dup()`을 0x1000번 호출하면 <br> `dma_buf`가 `pages[20]`의 PTE를 가리키며 `pages[20]`의 PTE에 쓸 수 있다. (숫자는 예시)" %}
+{% include gallery caption="`munmap()`, `mmap()` 호출 직후. 여기서 다시 `dup()`을 0x1000번 호출하면 <br> `dma_buf`가 `pages[21]`의 PTE를 가리키며 `pages[21]`의 PTE에 쓸 수 있다. (숫자는 예시)" %}
 
 <center>
     <img src="/assets/images/posts_img/writeups/m0lecon-2023-keasy/munmmap_mmap_after_dup_mem.png" alt="munmmap_mmap_after_dup_mem.png">
@@ -979,7 +979,7 @@ bind_core(0);
 
 **<center>0x8000000137d3a067</center>**
 
-여기서 실제 물리 페이지 프레임 주소를 기록한 부분은 `0x137d3a`로, 이 엔트리가 가리키고 있는 물리 주소는 `0x137d3a00`이다.
+여기서 실제 물리 페이지 프레임 주소를 기록한 부분은 `0x137d3a`로, 이 엔트리가 가리키고 있는 물리 주소는 `0x137d3a000`이다.
 
 참고로 맨 처음 비트인 1(`0x8 = 0b1000`)은 NX(XD)비트를 나타낸다. 즉 이 물리 프레임은 실행이 불가능하다는 뜻이다. 하위 12비트(`0x067 = 0b0110 0111`)는 각각
 `P`, `RW`, `US`, `A`, `D`를 나타내는 비트들이다. 이 비트들에 대한 설명은 [이 글](/kernel-analysis/page-table-analysis/) 마지막의 PTE 구조에 대한 표를 참고하자.
