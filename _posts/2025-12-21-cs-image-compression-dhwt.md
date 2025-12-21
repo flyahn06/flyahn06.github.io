@@ -17,7 +17,7 @@ date: 2025-12-21
 last_modified_at: 2025-12-21
 ---
 
-> 이 글은 이향원 교수님의 선형대수학 강의와 프로젝트를 기반으로 작성되었습니다.  
+> 이 글은 [이향원 교수](https://sites.google.com/view/leehwko/)님의 선형대수학 강의와 프로젝트를 기반으로 작성되었습니다.  
 > 해당 강의의 2014년 녹화본은 [여기](http://www.kocw.net/home/cview.do?mty=p&kemId=1039395)(KOCW)에서 시청할 수 있으며,
 > 이 글은 해당 강의 기준 6주차 수업을 정리한 글입니다.
 
@@ -651,4 +651,4 @@ O(\log n + \frac{n}{2^0} + \frac{n}{2^1} + \dots + \frac{n}{2^k})
 $$
 
 Considering that naive multiplication of $H_n\mathbf{x}$ takes $O(n^2)$ time, it provides significantly faster algorithm
-for perform discrete haar wavelet transform.
+for performing discrete haar wavelet transform.
