@@ -3,51 +3,51 @@
    ========================================================================== */
 
 /* Colors */
-$background-color: #f7f7f1 !default;
-$text-color: #070707 !default;
-$primary-color: #AFCBFF !default;
+$background-color: #f7f7f1;
+$text-color: #070707;
+$primary-color: #AFCBFF;
 
-$border-color: mix(#fff, $background-color, 20%) !default;
+$border-color: mix(#fff, $background-color, 20%);
 $code-background-color: #262626;
-$code-background-color-dark: rgba(185, 185, 185, 0.25) !default;
+$code-background-color-dark: rgba(185, 185, 185, 0.25);
 
-$mark-highlight-color: rgba($primary-color, 0.15) !default;
-$block-quote-background-color: rgba($primary-color, 0.1) !default;
-$form-background-color: rgba(255, 255, 255, 0.527) !default;
-$footer-background-color: mix(#000, $background-color, 3%) !default;
+$mark-highlight-color: rgba($primary-color, 0.15);
+$block-quote-background-color: rgba($primary-color, 0.1);
+$form-background-color: rgba(255, 255, 255, 0.527);
+$footer-background-color: mix(#000, $background-color, 3%);
 $link-color: #6FA2E8;
 $link-color-hover: #5C93DB;
-$link-color-visited: mix($link-color, rgb(3, 3, 3), 98%) !default;
+$link-color-visited: mix($link-color, rgb(3, 3, 3), 98%);
 
-$masthead-link-color: $text-color !default;
-$masthead-link-color-hover: mix(#000, $text-color, 70%) !default;
-$navicon-link-color-hover: mix(#000, $background-color, 80%) !default;
+$masthead-link-color: $text-color;
+$masthead-link-color-hover: mix(#000, $text-color, 70%);
+$navicon-link-color-hover: mix(#000, $background-color, 80%);
 
-$active-color: mix($primary-color, $background-color, 5%) !default;
+$active-color: mix($primary-color, $background-color, 5%);
 
 /* YIQ color contrast */
-$yiq-contrasted-dark-default: $text-color !default;
-$yiq-contrasted-light-default: #fff !default;
-$yiq-contrasted-threshold: 175 !default;
-$yiq-debug: false !default;
+$yiq-contrasted-dark-default: $text-color;
+$yiq-contrasted-light-default: #fff;
+$yiq-contrasted-threshold: 175;
+$yiq-debug: false;
 
 /* syntax highlighting (base16) dark */
-$base00: #262626 !default;
-$base01: #383838 !default;
-$base02: #484848 !default;
-$base03: #787878 !default;
-$base04: #b8b8b8 !default;
-$base05: #d8d8d8 !default;
-$base06: #e8e8e8 !default;
-$base07: #f8f8f8 !default;
-$base08: #ab4642 !default;
-$base09: #dc9656 !default;
-$base0a: #f7ca88 !default;
-$base0b: #a1b56c !default;
-$base0c: #86c1b9 !default;
-$base0d: #7cafc2 !default;
-$base0e: #ba8baf !default;
-$base0f: #a16946 !default;
+$base00: #262626;
+$base01: #383838;
+$base02: #484848;
+$base03: #787878;
+$base04: #b8b8b8;
+$base05: #d8d8d8;
+$base06: #e8e8e8;
+$base07: #f8f8f8;
+$base08: #ab4642;
+$base09: #dc9656;
+$base0a: #f7ca88;
+$base0b: #a1b56c;
+$base0c: #86c1b9;
+$base0d: #7cafc2;
+$base0e: #ba8baf;
+$base0f: #a16946;
 
 .author__urls.social-icons i,
 .author__urls.social-icons .svg-inline--fa,

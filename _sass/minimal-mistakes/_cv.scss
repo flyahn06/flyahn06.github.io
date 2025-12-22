@@ -1,0 +1,149 @@
+.cv-page {
+  background: $background-color;
+  color: $text-color;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 2.0rem 1.1rem 3.0rem;
+}
+
+.cv-section {
+  margin: 1.8rem 0 2.2rem;
+}
+
+.cv-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.9rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    color: $text-color;
+  }
+
+  &::before {
+    content: "";
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 999px;
+    background: mix($primary-color, #000, 35%);
+    transform: translateY(1px);
+  }
+}
+
+.cv-rule {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(
+                  90deg,
+                  mix(#000, $background-color, 12%),
+                  rgba(0, 0, 0, 0)
+  );
+}
+
+.cv-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.15rem;
+  padding: 0.85rem 0.1rem;
+  border-bottom: 1px solid $border-color;
+
+  &:hover {
+    background: none;
+  }
+}
+
+.cv-item:last-child {
+  border-bottom: none;
+}
+
+.cv-left {
+  min-width: 0;
+}
+
+.cv-title {
+  font-weight: 850;
+  font-size: 1.0rem;
+  letter-spacing: -0.01em;
+  color: $text-color;
+}
+
+.cv-subtitle {
+  margin-top: 0.22rem;
+  font-size: 0.9rem;
+  color: mix($text-color, $background-color, 45%);
+  font-weight: 650;
+}
+
+.cv-item ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.05rem;
+  font-size: 0.9rem;
+  color: mix($text-color, $background-color, 55%);
+  line-height: 1.55;
+
+  li {
+    margin: 0.15rem 0;
+  }
+}
+
+.cv-right {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.cv-loc {
+  color: mix($primary-color, #000, 35%);
+  font-weight: 750;
+  font-size: 0.9rem;
+}
+
+.cv-date {
+  margin-top: 0.15rem;
+  font-size: 0.88rem;
+  color: mix($primary-color, #000, 35%);
+  font-weight: 650;
+}
+
+.cv-plain-list {
+  margin: 0.25rem 0 0;
+  padding-left: 1.15rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+
+  li {
+    margin: 0.22rem 0;
+    color: $text-color;
+  }
+}
+
+.cv-item.is-card {
+  background: rgba($primary-color, 0.10);
+  border: 1px solid rgba($primary-color, 0.22);
+  border-radius: 14px;
+  padding: 1.0rem 0.95rem;
+}
+
+.cv-page a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $link-color-hover;
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 720px) {
+  .cv-item {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-right {
+    text-align: left;
+    white-space: normal;
+  }
+}

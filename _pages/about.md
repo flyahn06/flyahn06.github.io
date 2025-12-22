@@ -31,4 +31,6 @@ comments: false
           </a>
         </li>
     </ul>
-  </div>
+</div>
+
+CV available [here](/cv).
