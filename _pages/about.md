@@ -32,5 +32,3 @@ comments: false
         </li>
     </ul>
 </div>
-
-CV available [here](/cv).

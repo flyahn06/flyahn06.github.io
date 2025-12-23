@@ -15,6 +15,8 @@ author_profile: true
             <div class="cv-title">Konkuk University</div>
             <div class="cv-subtitle">B.S. in Computer Science and Engineering</div>
             <ul>
+                <li>Originally admitted as an undeclared student (School of Liberal Studies)</li>
+                <li>Declared a major in Computer Science and Engineering (expected Jan. 2026)</li>
                 <li>Expected graduation: Dec. 2029</li>
             </ul>
         </div>
