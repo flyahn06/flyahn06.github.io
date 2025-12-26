@@ -151,7 +151,7 @@ author_profile: true
     </div>
 
     <ul class="cv-plain-list">
-        <li>President’s List (Aug. 2025)</li>
+        <li>President’s List (Aug. 2025, Jan. 2026 (Expected))</li>
     </ul>
 </section>
 
