@@ -16,7 +16,7 @@ author_profile: true
             <div class="cv-subtitle">B.S. in Computer Science and Engineering</div>
             <ul>
                 <li>Originally admitted as an undeclared student (School of Liberal Studies)</li>
-                <li>Declared a major in Computer Science and Engineering (expected Jan. 2026)</li>
+                <li>Declared a major in Computer Science and Engineering (Jan. 2026)</li>
                 <li>Expected graduation: Dec. 2029</li>
             </ul>
         </div>
@@ -151,7 +151,7 @@ author_profile: true
     </div>
 
     <ul class="cv-plain-list">
-        <li>President’s List (Aug. 2025, Jan. 2026 (Expected))</li>
+        <li>President’s List (Aug. 2025, Jan. 2026)</li>
     </ul>
 </section>
 
