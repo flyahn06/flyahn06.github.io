@@ -252,3 +252,127 @@ retaddr과 여러 레지스터의 무결성을 보장하기 위해, 일반적인
    3. NS로 state를 전환함과 동시에 NS 영역의 대상 함수로 실행 흐름을 옮긴다.
 4. NS 함수 실행이 끝나면, 일반적인 복귀를 수행한다. 이때 `LR`에 `FNC_RETURN`이 저장되어 있기 때문에 이 함수로 복귀하게 된다.
 5. `FNC_RETURN`은 여러 검사를 수행한 후, 저장된 값에 문제가 없다고 판단되면 S로 state 전환 후 저장된 주소로 복귀한다. 
+
+## 3-4. Passing Arguments
+
+### 3-4-1. Pointers
+
+NS에서 S로의 호출이 일어날 때, 포인터를 인자로 사용함에 있어 다음과 같은 주의가 필요하다. 
+
+1. NS의 코드가 S의 코드를 선점한 후, 넘긴 포인터가 가리키고 있는 값을 변경할 수 있음
+2. NS의 코드가 자신이 접근할 수 없는 영역에 대한 코드를 넘길 수 있음 (confused deputy attack)
+
+안전하지 않은 코드의 예시는 다음과 같다. 
+
+<center>
+첫 번째 예시
+</center>
+
+```c
+int array[N];
+void __attribute__((cmse_nonsecure_entry)) func(int *p) {
+    // 다음 if문에서 조건을 검사할 때 p 자체에 대한 검사 없이 deref하므로,
+    // 실제로는 NS가 접근할 수 없는 영역일지라도 이 함수를 통해 접근이 가능해짐
+    if (0 <= *p && *p < N) {  
+        // 위의 검사가 통과한 직후,
+        // NS의 코드가 S를 선점한 후 p가 가리키는 값을 바꿔버릴 수 있음
+        // 예를 들어, N보다 크거나 같은 수를 넣거나 음수를 넣는 행위가 가능함
+        // 이럴 경우 다음 문장에서 OOB가 가능해짐
+        array[*p] = 0;
+    }
+}
+```
+
+<center>
+두 번째 예시
+</center>
+
+```c
+void __attribute__((cmse_nonsecure_entry)) copy(int *src, int *dest, int len) {
+    // NS의 함수가 해당 함수를 호출하면서
+    // 정당한 NS 영역 대신 S 영역을 넘기면, NS의 함수가 S의 메모리를 조작할 수 있는
+    // primitive로 활용이 가능함
+    for (int i = 0; i < len; i++) {
+        dest[i] = src[i];
+    }
+}
+```
+
+위에서 보여준 안전하지 않은 코드를 안전한 코드로 바꾸기 위해서는, CMSE 툴체인에서 제공하는 intrinsic 들을 사용해 넘겨받은 포인터를 점검해야 한다.
+사용할 수 있는 intrinsic은 다음과 같다.
+
+* `void *cmse_check_pointed_object(void *p, int flags)`  
+  `p`가 가리키고 있는 object가 `flags`를 만족시키는지 검사한다. 만약 만족하지 못할 경우 `NULL`을 리턴하며, 만족할 경우 `p`를 리턴한다. 
+* `void *cmse_check_address_range(void *p, size_t size, int flags)`  
+  `p`가 가리키고 있는 주소부터 `len`까지가 `flags`를 만족시키는지 검사한다. 만약 만족하지 못할 경우 `NULL`을 리턴하며, 만족할 경우 `p`를 리턴한다.
+
+사용할 수 있는 `flags`는 다음과 같다.
+
+| Flag Macro         | 설명                                                                                              |
+|--------------------|-------------------------------------------------------------------------------------------------|
+| CMSE_MPU_UNPRIV    | 검사가 unprivileged 권한으로 수행되도록 강제한다. 이 flag가 설정되지 않으면 현재 모드(thread, handler)와 현재 state가 check에 쓰인다. |
+| CMSE_MPU_READWRITE | 해당 주소에 R/W 권한이 있는지 확인한다. (`readwrote_ok` field 검사)                                              |
+| CMSE_MPU_READ      | 해당 주소에 R 권한이 있는지 확인한다. (`read_ok` field 검사)                                                     |
+| CMSE_AU_NONSECURE  | 해당 주소에 S가 비활성화 되어있는지 확인한다.                                                                      |
+| CMSE_MPU_NONSECURE | 해당 주소 검사에 NS의 MPU를 사용한다.                                                                        |
+| CMSE_NONSECURE     | CMSE_AU_NONSECURE와 CMSE_MPU_NONSECURE가 결합된 flag이다.                                              |
+{: style="display: table; margin: 0 auto; width: auto;"}
+
+이 intrinsic을 사용해 위에서 제시한 안전하지 않은 코드를 안전한 코드로 바꾸면 다음과 같다. 
+
+
+<center>첫 번째 예시</center>
+
+```c
+int array[N];
+void __attribute__((cmse_nonsecure_entry)) func(int *p) {
+    int index = 0;
+    volatile int *psafe = NULL;
+    
+    psafe = cmse_check_pointed_object(p, CMSE_NONSECURE | CMSE_MPU_READ);
+    if (psafe != NULL) 
+        // 여기서부터는 해당 함수를 호출한 NS 영역에서 p를 읽을 수 있음이 보장됨
+        // volatile 키워드를 붙이지 않으면 컴파일러 최적화에 의해
+        // psafe에 p가 안전하게 복사되지 않을 수 있음
+        index = *psafe;
+        
+        // 여기서부터는 psafe가 가리키는 값이 변경되더라도
+        // 안전하게 array에 접근할 수 있음
+        if (0 <= index && index < N) {
+            array[index] = 0;
+        }
+    }
+}
+```
+
+<center>두 번째 예시</center>
+
+```c
+void __attribute__((cmse_nonsecure_entry)) copy(int *src, int *dest, int len) {
+    int *srcsafe = NULL;
+    int *destsafe = NULL;
+    
+    srcsafe = cmse_check_address_range(src, len, CMSE_NONSECURE | CMSE_MPU_READ);
+    destsafe = cmse_check_address_range(dest, len, CMSE_NONSECURE | CMSE_MPU_WRITE);
+    
+    if ((srcsafe != NULL) && (destsafe != NULL)) {
+        // 여기서부터는 NS가 넘겨준 src와 dest 모두
+        // len의 길이만큼 NS에서 접근할 수 있으며,
+        // src의 경우 read 가능하고
+        // dest의 경우 write 가능함이 보장됨
+        for (int i = 0; i < len; i++) {
+            dest[i] = src[i];
+        }
+    }
+}
+```
+
+### 3-4-1. Function Pointers
+
+함수 포인터를 인자로 받은 경우, 위 절에서 소개했듯 `cmse_nsfptr_create(p)`를 통해 함수 포인터를 만들어야 한다.
+이 외에 쓸 수 있는 intrinsic들은 다음과 같다.
+
+* `cmse_is_nsfptr(p)`  
+  인자로 주어진 함수 포인터가 NS 함수 포인터로 해석되어야 하는지 여부를 리턴한다.
+* `cmse_nonsecure_caller()`  
+  S에서 자신이 어느 state에서 호출됐는지 확인한다. NS에서 불린 경우 0이 아닌 값을 리턴하고, S에서 불린 경우 0을 리턴한다. 
