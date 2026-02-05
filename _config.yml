@@ -23,7 +23,7 @@ title_separator: "&#124;"                   #
 subtitle:                                   # site tagline that appears below site title in masthead
 name: "flyahn06"                            # 블로그 닉네임 설정
 description: "this is my blog!"             # 블로그 설명
-url: "https://flyahn06.github.io"           # 블로그 URL
+url: "https://blog.flyahn06.com"           # 블로그 URL
 baseurl:                                    # the subpath of your site, e.g. "/blog"
 repository: "flyahn06/flyahn06.github.io"   # GitHub Repo 이름
 teaser:                                     #
@@ -134,7 +134,7 @@ footer:
       url: "mailto:flyahn06@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      url: "https://flyahn06.github.io"
+      url: "https://blog.flyahn06.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       # url: "https://twitter.com/"
