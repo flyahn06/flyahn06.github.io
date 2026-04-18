@@ -79,11 +79,10 @@ author_profile: true
             <div class="cv-subtitle">Team Leader</div>
             <ul>
                 <li>Hardware-assisted control flow integrity using ARM TrustZone</li>
-                <li>Expected completion: Feb. 2026</li>
             </ul>
         </div>
         <div class="cv-right">
-            <div class="cv-date">Aug. 2025 – Present</div>
+            <div class="cv-date">Aug. 2025 – Apr. 2026</div>
         </div>
     </div>
 
