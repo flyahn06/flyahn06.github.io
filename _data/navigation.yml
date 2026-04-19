@@ -33,6 +33,8 @@ categories:
         url: /categories/exploit-tech-analysis
   - title: "CS"
     url: /categories/cs
+  - title: "Crypto"
+    url: /categories/crypto
   - title: "Writeups"
     url: /categories/writeups
   - title: "ETC"
