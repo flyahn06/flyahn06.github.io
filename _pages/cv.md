@@ -143,6 +143,18 @@ author_profile: true
     </div>
 </section>
 
+<section class="cv-section">
+    <div class="cv-section-header">
+        <h2>Paper</h2><div class="cv-rule"></div>
+    </div>
+
+    <div class="cv-item">
+        <div class="cv-left">
+            <div class="cv-title">Arm TrustZone을 이용한 스택 카나리 격리: TF-M 환경에서의 오버헤드 평가</div>
+            <div class="cv-subtitle"><b>안동기</b>, 남유찬, 정기현, 이예준, 조효진, 한국정보보호학회 하계학술대회, May 2025.</div>       
+        </div>
+    </div>
+</section>
 
 <section class="cv-section">
     <div class="cv-section-header">
