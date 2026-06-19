@@ -33,6 +33,9 @@ categories:
         url: /categories/exploit-tech-analysis
   - title: "CS"
     url: /categories/cs
+    children:
+      - title: "Operating System"
+        url: /categories/os
   - title: "Crypto"
     url: /categories/crypto
   - title: "Writeups"
