@@ -7,7 +7,7 @@ categories:
 tags:
   - [os, process, scheduling, cpu virtualization]
 
-permalink: /os/virtualiztion-cpu/
+permalink: /os/virtualization-cpu/
 
 toc: true
 toc_sticky: true
