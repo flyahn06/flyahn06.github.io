@@ -34,7 +34,7 @@ author_profile: true
     </div>
 
     <ul class="cv-plain-list">
-        <li>Systems Security</li>
+        <li>System Security</li>
         <li>Low-level Programming</li>
         <li>Process Scheduling</li>
     </ul>
@@ -174,7 +174,7 @@ author_profile: true
 
     <ul class="cv-plain-list">
         <li>Languages: C, Python, Java, Assembly</li>
-        <li>Security: System Hacking, Kernel Hacking</li>
+        <li>Security: System Hacking, Kernel Hacking, Cryptography</li>
     </ul>
 </section>
 
