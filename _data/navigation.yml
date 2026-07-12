@@ -36,8 +36,12 @@ categories:
     children:
       - title: "Operating System"
         url: /categories/os
-  - title: "Crypto"
-    url: /categories/crypto
+  - title: "Mathematics"
+    children:
+    - title: "Crypto"
+      url: /categories/crypto
+    - title: "Linear Algebra"
+      url: /categories/lm
   - title: "Writeups"
     url: /categories/writeups
   - title: "ETC"
