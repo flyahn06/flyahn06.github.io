@@ -1,6 +1,6 @@
 ---
 title: "[CS][OS] Concurrency - Condition Variables"
-excerpt: "Race condition 해결을 위한 condition variables의 개념을 알아보자"
+excerpt: "효율적인 synchronization을 위한 condition variables의 개념을 알아보자"
 
 categories:
   - Operating System
@@ -47,7 +47,7 @@ void *worker(void *arg) {
 int main() {
   pthread_t workers[10];
   for (int i = 0; i < 10; i++) {
-    pthread_create(&workers[i], worker, NULL, (void *)urls[i]);
+    pthread_create(&workers[i], NULL, worker, (void *)urls[i]);
   }
 
   while (finished != 10) {
@@ -101,7 +101,7 @@ void *worker(void *arg) {
 
 int main() {
   pthread_t t;
-  pthread_create(&t, worker, NULL, NULL);
+  pthread_create(&t, NULL, worker, NULL);
   
   pthread_mutex_lock(&m);
   while (done == 0) {
@@ -139,7 +139,7 @@ void *worker(void *arg) {
 
 int main() {
   pthread_t t;
-  pthread_create(&t, worker, NULL, NULL);
+  pthread_create(&t, NULL, worker, NULL);
   
   pthread_mutex_lock(&m);
   pthread_cond_wait(&c, &m);
@@ -171,7 +171,7 @@ void *worker(void *arg) {
 
 int main() {
   pthread_t t;
-  pthread_create(&t, worker, NULL, NULL);
+  pthread_create(&t, NULL, worker, NULL);
   
   while (done == 0) {
     pthread_cond_wait(&c);
@@ -354,10 +354,6 @@ void *consumer(void *arg) {
 이 문제는, 상식적으로 producer는 consumer를 깨우고, consumer는 producer를 깨워야 하지만 condition variable을 하나만 사용해 어떤 스레드를 깨울지 명시되지 않았기 때문이다. 이를 해결하기 위해서는 condition variable 수를 2개로 늘리면 된다.
 
 ```c
-pthread_cond_t producer_c = PTHREAD_COND_INITIALIZER;
-pthread_cond_t consumer_c = PTHREAD_COND_INITIALIZER;
-pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
-
 void *producer(void *arg) {
   for (int i = 0; i < *(int *)arg; i++) {
     pthread_mutex_lock(&m);
