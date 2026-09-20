@@ -1,6 +1,3 @@
-@use "sass:list";
-@use "sass:math";
-@use "sass:meta";
 /// Validation
 /// ==========
 /// Each argument to Su has a single canonical syntax.
@@ -36,14 +33,14 @@
 @function su-valid-span(
   $span
 ) {
-  $type: meta.type-of($span);
+  $type: type-of($span);
   @if ($type == 'number') {
     @return $span;
   } @else if ($type == 'list') and su-valid-columns($span, 'silent-failure') {
     @return $span;
   }
 
-  $actual: '[#{meta.type-of($span)}] `#{meta.inspect($span)}`';
+  $actual: '[#{type-of($span)}] `#{inspect($span)}`';
   @return _susy-error(
     '#{$actual} is not a valid number, length, or column-list for $span.',
     'su-valid-span');
@@ -72,11 +69,11 @@
   $columns,
   $silent-failure: false
 ) {
-  @if (meta.type-of($columns) == 'list') {
+  @if (type-of($columns) == 'list') {
     $fail: false;
 
     @each $col in $columns {
-      @if (meta.type-of($col) != 'number') {
+      @if (type-of($col) != 'number') {
         $fail: true;
       }
     }
@@ -92,7 +89,7 @@
   }
 
   // Error Message
-  $actual: '[#{meta.type-of($columns)}] `#{meta.inspect($columns)}`';
+  $actual: '[#{type-of($columns)}] `#{inspect($columns)}`';
 
   @return _susy-error(
     '#{$actual} is not a valid list of numbers for $columns.',
@@ -118,13 +115,13 @@
 @function su-valid-gutters(
   $gutters
 ) {
-  $type: meta.type-of($gutters);
+  $type: type-of($gutters);
 
   @if ($type == 'number') {
     @return $gutters;
   }
 
-  $actual: '[#{$type}] `#{meta.inspect($gutters)}`';
+  $actual: '[#{$type}] `#{inspect($gutters)}`';
   @return _susy-error(
     '#{$actual} is not a number or length for $gutters.',
     'su-valid-gutters');
@@ -151,11 +148,11 @@
 @function su-valid-spread(
   $spread
 ) {
-  @if list.index(0 1 -1, $spread) {
+  @if index(0 1 -1, $spread) {
     @return $spread;
   }
 
-  $actual: '[#{meta.type-of($spread)}] `#{meta.inspect($spread)}`';
+  $actual: '[#{type-of($spread)}] `#{inspect($spread)}`';
   @return _susy-error(
     '#{$actual} is not a normalized [0 | 1 | -1] value for `$spread`.',
     'su-valid-spread');
@@ -188,15 +185,15 @@
   $location,
   $columns
 ) {
-  $count: list.length($columns);
+  $count: length($columns);
 
   @if $location {
-    @if (meta.type-of($location) != 'number') or (not math.is-unitless($location)) {
-      $actual: '[#{meta.type-of($location)}] `#{$location}`';
+    @if (type-of($location) != 'number') or (not unitless($location)) {
+      $actual: '[#{type-of($location)}] `#{$location}`';
       @return _susy-error(
         '#{$actual} is not a unitless number for $location.',
         'su-valid-location');
-    } @else if (math.round($location) != $location) {
+    } @else if (round($location) != $location) {
       @return _susy-error(
         'Location (`#{$location}`) must be a 1-indexed intiger position.',
         'su-valid-location');

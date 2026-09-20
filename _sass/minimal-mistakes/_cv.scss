@@ -1,4 +1,3 @@
-@use "sass:color";
 .cv-page {
   background: $background-color;
   color: $text-color;
@@ -30,7 +29,7 @@
     width: 0.42rem;
     height: 0.42rem;
     border-radius: 999px;
-    background: color.mix($primary-color, #000, 35%);
+    background: mix($primary-color, #000, 35%);
     transform: translateY(1px);
   }
 }
@@ -40,7 +39,7 @@
   height: 2px;
   background: linear-gradient(
                   90deg,
-                  color.mix(#000, $background-color, 12%),
+                  mix(#000, $background-color, 12%),
                   rgba(0, 0, 0, 0)
   );
 }
@@ -75,7 +74,7 @@
 .cv-subtitle {
   margin-top: 0.22rem;
   font-size: 0.9rem;
-  color: color.mix($text-color, $background-color, 45%);
+  color: mix($text-color, $background-color, 45%);
   font-weight: 650;
 }
 
@@ -83,7 +82,7 @@
   margin: 0.5rem 0 0;
   padding-left: 1.05rem;
   font-size: 0.9rem;
-  color: color.mix($text-color, $background-color, 55%);
+  color: mix($text-color, $background-color, 55%);
   line-height: 1.55;
 
   li {
@@ -97,7 +96,7 @@
 }
 
 .cv-loc {
-  color: color.mix($primary-color, #000, 35%);
+  color: mix($primary-color, #000, 35%);
   font-weight: 750;
   font-size: 0.9rem;
 }
@@ -105,7 +104,7 @@
 .cv-date {
   margin-top: 0.15rem;
   font-size: 0.88rem;
-  color: color.mix($primary-color, #000, 35%);
+  color: mix($primary-color, #000, 35%);
   font-weight: 650;
 }
 

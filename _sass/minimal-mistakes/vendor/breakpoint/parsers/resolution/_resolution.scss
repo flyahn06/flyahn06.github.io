@@ -1,9 +1,5 @@
-@use "sass:list";
-@use "sass:meta";
-@use "sass:math";
-
 @function breakpoint-make-resolutions($resolution) {
-  $length: list.length($resolution);
+  $length: length($resolution);
 
   $output: ();
 
@@ -12,50 +8,50 @@
     $value: '';
 
     // Find which is number
-    @if meta.type-of(list.nth($resolution, 1)) == 'number' {
-      $value: list.nth($resolution, 1);
+    @if type-of(nth($resolution, 1)) == 'number' {
+      $value: nth($resolution, 1);
     }
     @else {
-      $value: list.nth($resolution, 2);
+      $value: nth($resolution, 2);
     }
 
     // Determine min/max/standard
-    @if list.index($resolution, 'min-resolution') {
+    @if index($resolution, 'min-resolution') {
       $feature: 'min-';
     }
-    @else if list.index($resolution, 'max-resolution') {
+    @else if index($resolution, 'max-resolution') {
       $feature: 'max-';
     }
 
     $standard: '(#{$feature}resolution: #{$value})';
 
     // If we're not dealing with dppx,
-    @if math.unit($value) != 'dppx' {
+    @if unit($value) != 'dppx' {
       $base: 96dpi;
-      @if math.unit($value) == 'dpcm' {
+      @if unit($value) == 'dpcm' {
         $base: 243.84dpcm;
       }
       // Write out feature tests
       $webkit: '';
       $moz: '';
-      $webkit: '(-webkit-#{$feature}device-pixel-ratio: #{math.div($value, $base)})';
-      $moz: '(#{$feature}-moz-device-pixel-ratio: #{math.div($value, $base)})';
+      $webkit: '(-webkit-#{$feature}device-pixel-ratio: #{$value / $base})';
+      $moz: '(#{$feature}-moz-device-pixel-ratio: #{$value / $base})';
       // Append to output
-      $output: list.append($output, $standard, space);
-      $output: list.append($output, $webkit, space);
-      $output: list.append($output, $moz, space);
+      $output: append($output, $standard, space);
+      $output: append($output, $webkit, space);
+      $output: append($output, $moz, space);
     }
     @else {
       $webkit: '';
       $moz: '';
-      $webkit: '(-webkit-#{$feature}device-pixel-ratio: #{math.div($value, 1dppx)})';
-      $moz: '(#{$feature}-moz-device-pixel-ratio: #{math.div($value, 1dppx)})';
-      $fallback: '(#{$feature}resolution: #{math.div($value, 1dppx) * 96dpi})';
+      $webkit: '(-webkit-#{$feature}device-pixel-ratio: #{$value / 1dppx})';
+      $moz: '(#{$feature}-moz-device-pixel-ratio: #{$value / 1dppx})';
+      $fallback: '(#{$feature}resolution: #{$value / 1dppx * 96dpi})';
       // Append to output
-      $output: list.append($output, $standard, space);
-      $output: list.append($output, $webkit, space);
-      $output: list.append($output, $moz, space);
-      $output: list.append($output, $fallback, space);
+      $output: append($output, $standard, space);
+      $output: append($output, $webkit, space);
+      $output: append($output, $moz, space);
+      $output: append($output, $fallback, space);
     }
 
   }

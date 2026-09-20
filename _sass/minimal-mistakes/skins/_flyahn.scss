@@ -1,4 +1,3 @@
-@use "sass:color";
 /* ==========================================================================
    flyahn skin
    ========================================================================== */
@@ -8,23 +7,23 @@ $background-color: #f7f7f1;
 $text-color: #070707;
 $primary-color: #AFCBFF;
 
-$border-color: color.mix(#fff, $background-color, 20%);
+$border-color: mix(#fff, $background-color, 20%);
 $code-background-color: #262626;
 $code-background-color-dark: rgba(185, 185, 185, 0.25);
 
 $mark-highlight-color: rgba($primary-color, 0.15);
 $block-quote-background-color: rgba($primary-color, 0.1);
 $form-background-color: rgba(255, 255, 255, 0.527);
-$footer-background-color: color.mix(#000, $background-color, 3%);
+$footer-background-color: mix(#000, $background-color, 3%);
 $link-color: #6FA2E8;
 $link-color-hover: #5C93DB;
-$link-color-visited: color.mix($link-color, rgb(3, 3, 3), 98%);
+$link-color-visited: mix($link-color, rgb(3, 3, 3), 98%);
 
 $masthead-link-color: $text-color;
-$masthead-link-color-hover: color.mix(#000, $text-color, 70%);
-$navicon-link-color-hover: color.mix(#000, $background-color, 80%);
+$masthead-link-color-hover: mix(#000, $text-color, 70%);
+$navicon-link-color-hover: mix(#000, $background-color, 80%);
 
-$active-color: color.mix($primary-color, $background-color, 5%);
+$active-color: mix($primary-color, $background-color, 5%);
 
 /* YIQ color contrast */
 $yiq-contrasted-dark-default: $text-color;
